@@ -59,9 +59,9 @@ def makeTodoStore(todoFile) as DeepFrozen:
     # def dumpTodo(drain, todo :Map[Str, List[Str]]) as DeepFrozen:
     def dumpTodo(drain, todo) as DeepFrozen:
         for k => v in todo:
-            drain<-receive(`$k:$\n`)
+            drain<-receive(b`$k:$\n`)
             for item in v:
-                drain<-receive(` * $v$\n`)
+                drain<-receive(b` * $item$\n`)
 
     def loadTodo(fount) as DeepFrozen:
         def [p, r] := Ref.promise()
